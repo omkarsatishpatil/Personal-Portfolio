@@ -151,14 +151,14 @@ main{
     right: 0;
     padding: 15px;
     background-color: #7e7e7e;
-    border-radius: 0 15px ;
+    border-radius: 0 15px;
 }
 
 .navbar a{
     text-decoration-line: none;
-    color: aliceblue;
     padding: 11px;
     font-size: larger;
+    color: aliceblue;
 }
 
 .homecontainer{
@@ -167,8 +167,9 @@ main{
     width:50vw;
 }
 
-.active{
-    display: flex;
+.navbar a.active{
+    display: inline;
+    color: rgb(234, 234, 131);
 }
 
 .rightcontainer .hidden{

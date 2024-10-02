@@ -1,27 +1,23 @@
-// Get all the navbar links
-const navLinks = document.querySelectorAll('.navbar a');
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.tab-link');
+  const sections = document.querySelectorAll('.section-con');
 
-// Add click event to each navbar link
-navLinks.forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    // Remove the 'active' class from all sections and add 'hidden'
-    const sections = document.querySelectorAll('section');
+  function showSection(sectionId) {
     sections.forEach(section => {
-      section.classList.add('hidden');
-      section.classList.remove('active');
+      section.style.display = section.id === sectionId ? 'block' : 'none';
     });
+  }
 
-    // Get the section ID based on the link's href attribute or text content
-    const targetID = this.textContent.trim(); // Use the text content of the link
-    const targetSection = document.getElementById(targetID);
-
-    // Check if target section exists
-    if (targetSection) {
-      // Show the clicked section by adding 'active' and removing 'hidden'
-      targetSection.classList.remove('hidden');
-      targetSection.classList.add('active');
-    }
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      const targetSection = tab.getAttribute('href').substring(1);
+      showSection(targetSection);
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
   });
+
+  // Display the 'home' section by default
+  showSection('home');
 });
